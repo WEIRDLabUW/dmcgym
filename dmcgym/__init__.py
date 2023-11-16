@@ -5,12 +5,14 @@ from gym.envs.registration import register
 from dmcgym.env import DMCGYM
 
 
-def create_dm_control_env(domain_name: str, task_name: str) -> gym.Env:
+def create_dm_control_env(domain_name: str, task_name: str, render_mode: str | None = None) -> gym.Env:
+    assert render_mode is None or render_mode == 'rgb_array'
     env = suite.load(domain_name=domain_name, task_name=task_name)
     return DMCGYM(env)
 
 
-def create_dm_control_env_manipulation(environment_name: str) -> gym.Env:
+def create_dm_control_env_manipulation(environment_name: str, render_mode: str | None = None) -> gym.Env:
+    assert render_mode is None or render_mode == 'rgb_array'
     env = manipulation.load(environment_name=environment_name)
     return DMCGYM(env)
 
