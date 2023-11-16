@@ -96,7 +96,12 @@ class DMCGYM(gym.core.Env):
 
         return dmc_obs2gym_obs(obs), reward, done, info
 
-    def reset(self):
+    def reset(
+            self, 
+            seed: int | None = None
+        ):
+        if seed is not None:
+            self.seed(seed)
         time_step = self._env.reset()
         obs = time_step.observation
         return dmc_obs2gym_obs(obs)
