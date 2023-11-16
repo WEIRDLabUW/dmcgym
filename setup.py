@@ -17,7 +17,7 @@ def read_requirements_file(filename):
 
 description = ('A gym wrapper for DeepMind Control suite environments.')
 
-install_requires = read_requirements_file('requirements.txt')
+# install_requires = read_requirements_file('requirements.txt')
 
 setup(
     name='dmcgym',
@@ -40,6 +40,6 @@ setup(
     ],
     keywords='reinforcement, machine, learning, research',
     packages=find_packages(),
-    install_requires=install_requires,
+    # install_requires=install_requires,
     license='MIT',
 )
