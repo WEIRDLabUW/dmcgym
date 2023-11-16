@@ -104,7 +104,13 @@ class DMCGYM(gym.core.Env):
             self.seed(seed)
         time_step = self._env.reset()
         obs = time_step.observation
-        return dmc_obs2gym_obs(obs)
+
+        info = {}
+        done = time_step.last()
+        if done and time_step.discount == 1.0:
+            info['TimeLimit.truncated'] = True
+
+        return dmc_obs2gym_obs(obs), info
 
     def render(self,
                mode='rgb_array',
